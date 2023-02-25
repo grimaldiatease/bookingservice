@@ -1,0 +1,65 @@
+{
+  "name": "ReservationDetail",
+  "fields": [
+    {
+      "fieldName": "checkIn",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "checkOut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "adult",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "child",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "infant",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nights",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "reservation",
+      "otherEntityRelationshipName": "reservationDetail",
+      "relationshipName": "reservation",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "reservation_detail",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": [
+    "bookingservice"
+  ]
+}

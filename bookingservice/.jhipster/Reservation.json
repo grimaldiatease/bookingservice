@@ -1,0 +1,68 @@
+{
+  "name": "Reservation",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "ReservationType",
+      "fieldValues": "TDY,BAH,LEAVE"
+    },
+    {
+      "fieldName": "propertyId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ReservationStatus",
+      "fieldValues": "WAITING,WAITING_RESCHEDULE,ACTIVE,EXECUTED,CANCELLED,ARCHIVED,REJECTED_BY_CHANNEL"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "guest",
+      "otherEntityRelationshipName": "reservation",
+      "relationshipName": "guest"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "payment",
+      "otherEntityRelationshipName": "reservation",
+      "relationshipName": "payment",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "reservationDetail",
+      "otherEntityRelationshipName": "reservation",
+      "relationshipName": "reservationDetail",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "reservation",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": [
+    "bookingservice"
+  ]
+}
