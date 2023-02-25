@@ -1,0 +1,135 @@
+
+application {
+  config {
+    baseName bookingservice,
+    applicationType microservice,
+    packageName com.atease.booking,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    skipClient true 
+    serverPort 9001
+ 
+  }
+  entities Reservation,ReservationDetail,PaymentDetail,Payment
+}
+
+application {
+  config {
+    baseName guestservice,
+    applicationType microservice,
+    packageName com.atease.guest,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    skipClient true 
+    serverPort 9002
+  }
+  entities Guest
+}
+
+
+
+entity Reservation {
+ 
+ type ReservationType
+ propertyId Long
+ status ReservationStatus
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+entity Guest {
+ firstName String
+ lastName String 
+ phone String
+ email String 
+ address1 String 
+ address2 String 
+ country String 
+ city String 
+ state  String 
+ zip String 
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+entity ReservationDetail {
+ 
+ checkIn LocalDate
+ checkOut LocalDate
+ adult  Integer
+ child  Integer
+ infant  Integer
+ nights  Integer
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+entity PaymentDetail {
+ quantity Integer
+ unitPrice Double
+ total Total 
+ type PaymentDetailType
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+entity Payment{
+ 
+
+
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+
+
+enum ReservationStatus {
+ 
+	WAITING, 
+	WAITING_RESCHEDULE, 
+	ACTIVE, 
+	EXECUTED, 
+	CANCELLED, 
+	ARCHIVED, 
+	REJECTED_BY_CHANNEL
+}
+enum PaymentDetailType{
+ 
+PRICE_BY_NIGHT, 
+	TAXES, 
+	FEE,
+    ATEASE_COMMISSION 
+}
+enum ReservationType{
+ 
+	TDY, 
+	BAH, 
+	LEAVE
+}
+
+
+relationship OneToOne {
+  Payment to Reservation
+  ReservationDetail to Reservation
+}
+relationship ManyToOne {
+  PaymentDetail  to Payment
+  Reservation to Guest
+}
+
+
+dto * with mapstruct 
+service * with serviceClass
+paginate Payment,Reservation,Guest  with pagination
+
+    
