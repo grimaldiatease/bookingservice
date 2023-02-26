@@ -1,0 +1,67 @@
+{
+  "applications": ["bookingservice"],
+  "changelogDate": "20230226070216",
+  "clientRootFolder": "bookingservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "reservation_details",
+  "fields": [
+    {
+      "fieldName": "checkIn",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "checkOut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "adult",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "child",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "infant",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nights",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "bookingservice",
+  "name": "ReservationDetails",
+  "pagination": "no",
+  "readOnly": true,
+  "relationships": [
+    {
+      "otherEntityName": "reservation",
+      "otherEntityRelationshipName": "reservationDetails",
+      "ownerSide": true,
+      "relationshipName": "reservation",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
