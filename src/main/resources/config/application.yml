@@ -157,10 +157,6 @@ spring:
       hibernate.order_updates: true
       hibernate.query.fail_on_pagination_over_collection_fetch: true
       hibernate.query.in_clause_parameter_padding: true
-      hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
-      hibernate.cache.use_minimal_puts: true
-      hibernate.cache.hazelcast.instance_name: bookingservice
-      hibernate.cache.hazelcast.use_lite_member: true
     hibernate:
       ddl-auto: none
       naming:
@@ -236,7 +232,6 @@ jhipster:
     license: unlicensed
     license-url:
   security:
-    content-security-policy: "default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:"
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
