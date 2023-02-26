@@ -1,0 +1,47 @@
+{
+  "applications": ["bookingservice"],
+  "changelogDate": "20230226061957",
+  "clientRootFolder": "bookingservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "service_info",
+  "fields": [
+    {
+      "fieldName": "currentInstallation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "bookingservice",
+  "name": "ServiceInfo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "reservation",
+      "otherEntityRelationshipName": "serviceInfo",
+      "ownerSide": true,
+      "relationshipName": "reservation",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
