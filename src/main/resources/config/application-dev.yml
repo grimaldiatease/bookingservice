@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    com.atease.apigateway: DEBUG
+    com.atease.booking: DEBUG
 
 eureka:
   instance:
@@ -47,7 +47,7 @@ spring:
       # it can be set to any label, branch or commit of the configuration source Git repository
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:bookingservice;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=LEGACY
+    url: jdbc:h2:file:./target/h2db/db/bookingservice;DB_CLOSE_DELAY=-1;MODE=LEGACY
     username: bookingservice
     password:
     hikari:
@@ -81,7 +81,7 @@ spring:
         enabled: true
 
 server:
-  port: 8081
+  port: 9001
 
 # ===================================================================
 # JHipster specific properties
@@ -91,9 +91,9 @@ server:
 
 jhipster:
   cache: # Cache configuration
-    hazelcast: # Hazelcast distributed cache
-      time-to-live-seconds: 3600
-      backup-count: 1
+    ehcache: # Ehcache configuration
+      time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
+      max-entries: 100 # Number of objects in each cache entry
   registry:
     password: admin
   # CORS is disabled by default on microservices, as you should access them through a gateway.
