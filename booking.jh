@@ -1,0 +1,145 @@
+
+application {
+  config {
+    baseName bookingservice,
+    applicationType microservice,
+    packageName com.atease.booking,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    skipClient true 
+    serverPort 9001
+ 
+  }
+  entities *
+}
+/*
+application {
+  config {
+    baseName guestservice,
+    applicationType microservice,
+    packageName com.atease.guest,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    skipClient true 
+    serverPort 9002
+  }
+  entities Guest
+}
+*/
+
+
+entity Reservation {
+ 
+ type ReservationType
+ propertyId Long
+ status ReservationStatus
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+@readOnly
+entity Guest {
+ firstName String
+ lastName String 
+ phone String
+ email String 
+ address1 String 
+ address2 String 
+ country String 
+ city String 
+ state  String 
+ zip String 
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+@readOnly
+entity ReservationDetails {
+ 
+ checkIn LocalDate
+ checkOut LocalDate
+ adult  Integer
+ child  Integer
+ infant  Integer
+ nights  Integer
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+@readOnly
+entity PaymentDetails {
+ quantity Integer
+ unitPrice Double
+ total Double 
+ type PaymentDetailType
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+entity Payment{
+ 
+totalAmount Double
+reference String
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+entity PaymentType{
+ name String
+ description String
+ modifiedDate LocalDate
+ createdDate LocalDate
+ modifiedBy String 
+ createdBy String 
+}
+
+
+enum ReservationStatus {
+ 
+	WAITING, 
+	WAITING_RESCHEDULE, 
+	ACTIVE, 
+	EXECUTED, 
+	CANCELLED, 
+	ARCHIVED, 
+	REJECTED_BY_CHANNEL
+}
+enum PaymentDetailType{
+ 
+PRICE_BY_NIGHT, 
+	TAXES, 
+	FEE,
+    ATEASE_COMMISSION 
+}
+enum ReservationType{
+ 
+	TDY, 
+	BAH, 
+	LEAVE
+}
+
+
+relationship OneToOne {
+  Payment to Reservation
+  ReservationDetails to Reservation
+  ServiceInfo to Reservation
+}
+relationship ManyToOne {
+  PaymentDetails  to Payment
+  Reservation to Guest
+}
+
+
+dto * with mapstruct 
+service * with serviceClass
+paginate Payment,Reservation,Guest  with pagination
+
+    
