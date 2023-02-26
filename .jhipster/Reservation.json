@@ -1,0 +1,70 @@
+{
+  "applications": ["bookingservice"],
+  "changelogDate": "20230226001431",
+  "clientRootFolder": "bookingservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "reservation",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "ReservationType",
+      "fieldValues": "TDY,BAH,LEAVE"
+    },
+    {
+      "fieldName": "propertyId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ReservationStatus",
+      "fieldValues": "WAITING,WAITING_RESCHEDULE,ACTIVE,EXECUTED,CANCELLED,ARCHIVED,REJECTED_BY_CHANNEL"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "bookingservice",
+  "name": "Reservation",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "guest",
+      "otherEntityRelationshipName": "reservation",
+      "relationshipName": "guest",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "payment",
+      "otherEntityRelationshipName": "reservation",
+      "ownerSide": false,
+      "relationshipName": "payment",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "reservationDetails",
+      "otherEntityRelationshipName": "reservation",
+      "ownerSide": false,
+      "relationshipName": "reservationDetails",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
